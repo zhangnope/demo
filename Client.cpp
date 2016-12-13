@@ -131,22 +131,54 @@ int main(){
 		}
 
 		if (temp == 2){
-			//÷¥––undo≤Ÿ◊˜,undo’ªµØ’ª,redo’ª—π’ª
-			Chess *temp=stest->Undo();
-			x = temp->GetX();
-			y = temp->GetY();
-			Ch[x - 1][y - 1] = '*';
+			int ic;
+			cout << "«Î ‰»Î–Ë“™Ã¯◊™µƒ≤Ω ˝" <<"0-"<<stest->GetUndoTimes()<<endl;
+			cin >> ic;
+			if (ic > stest->GetUndoTimes() || ic <= 0){
+				//÷¥––undo≤Ÿ◊˜,undo’ªµØ’ª,redo’ª—π’ª
+				Chess *temp = stest->Undo();
+				x = temp->GetX();
+				y = temp->GetY();
+				Ch[x - 1][y - 1] = '*';
+			}
+			else
+			{
+				for (int i = 1; i <= ic; i++){
+					//÷¥––undo≤Ÿ◊˜,undo’ªµØ’ª,redo’ª—π’ª
+					Chess *temp = stest->Undo();
+					x = temp->GetX();
+					y = temp->GetY();
+					Ch[x - 1][y - 1] = '*';
+				}
+
+			}
 
 			//œ‘ æµ±«∞∆Â≈Ã
 			Display(Ch, SizeSpot);
 		}
 
 		if (temp == 3){
-			//÷¥––redo≤Ÿ◊˜,redo’ªµØ’ª,undo’ª—π’ª
-			Chess *temp = stest->Redo();
-			x = temp->GetX();
-			y = temp->GetY();
-			Ch[x - 1][y - 1] = '0';
+			int ic;
+			cout << "«Î ‰»Î–Ë“™Ã¯◊™µƒ≤Ω ˝" << "0-" << stest->GetRedoTimes() << endl;
+			cin >> ic;
+			if (ic > stest->GetRedoTimes() || ic <= 0){
+				//÷¥––undo≤Ÿ◊˜,undo’ªµØ’ª,redo’ª—π’ª
+				Chess *temp = stest->Redo();
+				x = temp->GetX();
+				y = temp->GetY();
+				Ch[x - 1][y - 1] = '0';
+			}
+			else
+			{
+				for (int i = 1; i <= ic; i++){
+					//÷¥––undo≤Ÿ◊˜,undo’ªµØ’ª,redo’ª—π’ª
+					Chess *temp = stest->Redo();
+					x = temp->GetX();
+					y = temp->GetY();
+					Ch[x - 1][y - 1] = '0';
+				}
+
+			}
 
 			//œ‘ æµ±«∞∆Â≈Ã
 			Display(Ch, SizeSpot);
