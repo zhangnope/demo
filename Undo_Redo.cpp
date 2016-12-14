@@ -117,64 +117,78 @@ Chess* Spot::Undo(){
 	return temp;
 }
 
+//获得可执行redo次数
 int Spot::GetRedoTimes(){
 	return redoTimes;
 }
 
+//获得可执行undo次数
 int Spot::GetUndoTimes(){
 	return undoTimes;
 }
 
+//redo次数加一
 void Spot::IncRedoTimes(){
 	redoTimes++;
 }
 
+//undo次数加一
 void Spot::IncUndoTimes(){
 	undoTimes++;
 }
 
+//redo次数减一
 void Spot::DecRedoTimes(){
 	redoTimes--;
 }
 
+//undo次数减一
 void Spot::DecUndoTimes(){
 	undoTimes--;
 }
 
+//判断是否可以执行redo操作
 bool Spot::CnRedo(){
 	return this->GetRedoTimes() > 0;
 }
 
+//判断是否可以执行undo操作
 bool Spot::CnUndo(){
 	return this->GetUndoTimes() > 0;
 }
 
+//undo栈压栈
 void Spot::UndoPush(Chess* item){
 	sUndo.Push(item);
 	IncUndoTimes();
 }
 
+//undo栈出栈
 Chess* Spot::UndoPop(){	
 	Chess *temp=sUndo.Pop();
 	DecUndoTimes();
 	return temp;
 }
 
+//redo栈压栈
 void Spot::RedoPush(Chess* item){
 	sRedo.Push(item);
 	IncRedoTimes();
 }
 
+//redo栈出栈
 Chess* Spot::RedoPop(){
 	Chess *temp = sRedo.Pop();
 	DecRedoTimes();
 	return temp;
 }
 
+//获得当前可执行redo次数
 void Spot::SetRedoTimes(int temp){
 	redoTimes = temp;
 }
 
+//获得当前可执行undo次数
 void Spot::SetUndoTimes(int temp){
 	undoTimes = temp;
 }
