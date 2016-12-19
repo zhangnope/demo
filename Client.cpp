@@ -136,6 +136,7 @@ int main(){
 			cout << "请输入需要跳转的步数" <<"0-"<<stest->GetUndoTimes()<<endl;
 			cin >> ic;
 			if (ic > stest->GetUndoTimes() || ic <= 0){
+				cout << "非法输入,仅执行一步操作" << endl;
 				//执行undo操作,undo栈弹栈,redo栈压栈
 				Chess *temp = stest->Undo();
 				x = temp->GetX();
@@ -163,6 +164,7 @@ int main(){
 			cout << "请输入需要跳转的步数" << "0-" << stest->GetRedoTimes() << endl;
 			cin >> ic;
 			if (ic > stest->GetRedoTimes() || ic <= 0){
+				cout << "非法输入,仅执行一步操作" << endl;
 				//执行undo操作,undo栈弹栈,redo栈压栈
 				Chess *temp = stest->Redo();
 				x = temp->GetX();
